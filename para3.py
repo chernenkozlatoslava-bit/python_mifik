@@ -10,7 +10,7 @@ job_list = {
     "Java developer": {"salary": 50, "gladness_less": 10},
     "Python developer": {"salary": 40, "gladness_less": 3},
     "C++ developer": {"salary": 45, "gladness_less": 25},
-    "Rust developer": {"salary": 70, "gladness_less": 5},
+    "Rust developer": {"salary": 70, "gladness_less": 5}
 }
 
 
@@ -99,7 +99,7 @@ class Human:
 
 
     def to_repair(self):
-            self.car.strengt += 100
+            self.car.strength += 100
             self.money -= 50
 
     def days_indexes(self, day):
@@ -132,11 +132,11 @@ class Human:
             self.get_home()
         if self.car is None:
             self.get_car()
-            print("I bought a car {self.car.brand}")
+            print(f"I bought a car {self.car.brand}")
         if self.job is None:
             self.get_job()
             print(f"I get a job {self.job.job} with salary {self.job.salary}")
-        self.day_indexes(day)
+        self.days_indexes(day)
         dice = random.randint(1, 4)
         if self.satiety < 20:
             print("I'll go eat")
@@ -151,7 +151,7 @@ class Human:
         elif self.money < 0:
             print("Start working")
             self.work()
-        elif self.car.strenhth < 15:
+        elif self.car.strength < 15:
             print("I need repeir my car")
             self.to_repair()
         elif dice == 1:
@@ -197,13 +197,13 @@ class House:
 
 class Job:
     def __init__(self, job_list):
-        self.job = random.choise(list(job_list))
+        self.job = random.choice(list(job_list))
         self.salary = job_list[self.job]["salary"]
         self.gladness_less = job_list[self.job]["gladness_less"]
 
 
 persona = Human(name="Nastya")
 
-for day in range(1, 8):
+for day in range(1, 30):
     if persona.live(day) == False:
         break
