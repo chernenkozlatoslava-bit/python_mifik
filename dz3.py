@@ -13,12 +13,17 @@ job_list = {
     "Rust developer": {"salary": 70, "gladness_less": 5}
 }
 
-
+pet_list = {
+    "Cat": {"food_less": 6, "gladness_up": 10},
+    "Dog": {"food_less": 10, "gladness_up": 15},
+    "Parrot": {"food_less": 2, "gladness_up": 7},
+    "Hamster": {"food_less": 1, "gladness_up": 4}
+}
 
 
 class Human:
 
-    def __init__(self, name="Human", job=None, home=None, car=None):
+    def __init__(self, name="Human", job=None, home=None, car=None, pet=None):
         self.name = name
         self.money = 100
         self.gladness = 50
@@ -26,6 +31,7 @@ class Human:
         self.job = job
         self.car = car
         self.home = home
+        self.pet = pet
 
     def get_home(self):
         self.home = House()
@@ -42,6 +48,9 @@ class Human:
             return
         self.job = Job(job_list)
 
+    def get_pet(self):
+        self.pet = Pet(pet_list)
+
     def eat(self):
         if self.home.food <= 0:
             self.shopping("food")
@@ -52,6 +61,12 @@ class Human:
             self.satiety += 5
             self.home.food -= 5
 
+    def play_pet(self):
+        if self.home.food <= 0:
+            self.shopping("food")
+        else:
+            self.gladness += self.pet.gladness_up
+            self.home.food -= self.pet.food_less
 
 
     def work(self):
@@ -121,7 +136,7 @@ class Human:
             print("Dead")
             return False
         if self.money < -500:
-            print("Bankrot")
+            print("Bankrupt")
             return False
 
     def live(self, day):
@@ -136,8 +151,11 @@ class Human:
         if self.job is None:
             self.get_job()
             print(f"I get a job {self.job.job} with salary {self.job.salary}")
+        if self.pet is None:
+            self.get_pet()
+            print(f"I have a pet {self.pet.pet}")
         self.days_indexes(day)
-        dice = random.randint(1, 4)
+        dice = random.randint(1, 5)
         if self.satiety < 20:
             print("I'll go eat")
             self.eat()
@@ -152,7 +170,7 @@ class Human:
             print("Start working")
             self.work()
         elif self.car.strength < 15:
-            print("I need repeir my car")
+            print("I need repair my car")
             self.to_repair()
         elif dice == 1:
             print("Chill!")
@@ -166,6 +184,9 @@ class Human:
         elif dice == 4:
             print("Time to treats")
             self.shopping(manage="delicacies")
+        elif dice == 5:
+            print("Time to play with pet")
+            self.play_pet()
 
 
 
@@ -201,9 +222,15 @@ class Job:
         self.salary = job_list[self.job]["salary"]
         self.gladness_less = job_list[self.job]["gladness_less"]
 
+class Pet:
+    def __init__(self, pet_list):
+        self.pet = random.choice(list(pet_list))
+        self.food_less = pet_list[self.pet]["food_less"]
+        self.gladness_up = pet_list[self.pet]["gladness_up"]
+
 
 persona = Human(name="Nastya")
 
-for day in range(1, 30):
+for day in range(1, 12):
     if persona.live(day) == False:
         break

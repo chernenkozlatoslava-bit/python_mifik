@@ -20,7 +20,7 @@ class Student:
 
     def to_chill(self):
         print("Rest time")
-        self.gladness +=5
+        self.gladness += 5
         self.progress -= 0.1
 
     def is_alive(self):
@@ -28,7 +28,7 @@ class Student:
             print("Cast out...")
             self.alive = False
         elif self.gladness <= 0:
-            print("Depression")
+            print("Depression...")
             self.alive = False
         elif self.progress > 5:
             print("Passed...")
@@ -39,7 +39,7 @@ class Student:
         print(f"Progress = {self.progress}")
 
     def live(self, day):
-        day = f"Day {day} of {self.name} live"
+        day = f"Day {day} of {self.name} life"
         print(f"{day:=^50}")
         live_cube = random.randint(1, 3)
         if live_cube == 1:
@@ -52,9 +52,11 @@ class Student:
         self.is_alive()
 
 
-student1 = Student(name="Onufri")
+student1 = Student(name="Onufrij")
+student2 = Student(name="Lilya")
 
 for day in range(365):
-    if student1.alive == False:
-        break
-    student1.live(day)
+    if student1.alive == True:
+        student1.live(day)
+    if student2.alive == True:
+        student2.live(day)
