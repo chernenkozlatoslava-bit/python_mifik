@@ -8,6 +8,7 @@ class NumberSequence:
             yield number
 
 
+
 numbers = NumberSequence(1, 5)
 
 # First iteration
