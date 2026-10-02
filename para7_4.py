@@ -7,11 +7,9 @@ def raise_to_the_degrees(number):
             return
         i += 1
 
-
 res = raise_to_the_degrees(1234)
 print(res)
 
 for el in res:
     print(el)
     print()
-

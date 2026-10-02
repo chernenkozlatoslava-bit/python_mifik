@@ -1,13 +1,13 @@
 my_list = [1, 2, 3]
-interator = iter(my_list)
+iterator = iter(my_list)
 
 '''
-print(next(interator))
-print(next(interator))
-print(next(interator))
+print(next(iterator))
+print(next(iterator))
+print(next(iterator))
 '''
 
-for elem in interator:
+for elem in iterator:
     print(elem)
-for elem in interator:
+for elem in iterator:
     print(elem)

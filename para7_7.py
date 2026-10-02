@@ -1,4 +1,5 @@
 def checker(func):
+
     def checker(*args, **kwargs):
         try:
             result = func(*args, *kwargs)
@@ -6,12 +7,11 @@ def checker(func):
         except Exception as exc:
             print(f"We have problems {exc}")
         else:
-            print(f"No problems. Result - {result}")
+            print(f"No problem. Result - {result}")
     return checker
-
 
 def calculate(expr):
     return eval(expr)
 
-calc1 = checker(calculate)
-calc1("2+2")
+calc = checker(calculate)
+calc("2+2")

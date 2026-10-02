@@ -4,8 +4,7 @@ def raise_to_the_degrees(number, max_degree):
         yield number ** i
         i += 1
 
-
-res = raise_to_the_degrees(1234, 200)
+res = raise_to_the_degrees(1234, 20)
 print(res)
 
 for el in res:
