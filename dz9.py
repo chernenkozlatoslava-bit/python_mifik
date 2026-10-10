@@ -17,6 +17,7 @@ class CurrencyConverter:
         return uah / self.rate
 
 
+
 converter = CurrencyConverter()
 uah = float(input("Введіть суму в гривнях: "))
 usd = converter.convert(uah)
