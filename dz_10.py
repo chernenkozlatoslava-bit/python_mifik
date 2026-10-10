@@ -45,8 +45,8 @@ for elem in days:
 connection.commit()
 
 cur.execute("SELECT * FROM weather;")
-
 connection.commit()
+
 res = cur.fetchall()
 print(res)
 
